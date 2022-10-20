@@ -1,15 +1,16 @@
 // selectors
 const submitButton = document.querySelector('.submit-button');
 const modal = document.querySelector('.modal')
-overlay = document.querySelector('.overlay')
+const overlay = document.querySelector('.overlay')
+const textBox = document.querySelector(".text");
 
 const yesButton = document.querySelector('.yes-button');
 const cancelButton = document.querySelector('.cancel-button');
 
 //event listeners
 submitButton.addEventListener('click', modalPopup);
-yesButton.addEventListener('click', modalClose);
-cancelButton.addEventListener('click', modalClose)
+yesButton.addEventListener('click', modalCloseYes);
+cancelButton.addEventListener('click', modalCloseCancel)
 
 
 //functions
@@ -20,9 +21,18 @@ function modalPopup(event) {
     overlay.classList.add("active")
 }
 
-function modalClose(event) {
+function modalCloseYes(event) {
     if (modal == null) return
     modal.classList.remove("active");
     overlay.classList.remove("active");
+    textBox.textContent = "You clicked Yes"
 
+
+}
+
+function modalCloseCancel(event) {
+    if (modal == null) return
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+    textBox.textContent = "You clicked Cancel"
 }
